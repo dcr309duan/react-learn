@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>hello_react</title>
+    <style>
+        .title {
+            background-color: orange;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="test"></div>
+
+    <!-- 引入 react 核心库，引入之后，全局可以使用 React 对象 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入 react-dom. 用于支持 react 操作 DOM，全局可以使用 ReactDOM 对象 -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入 babel, 用于将 jsx 转位 js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <!-- 这里 type 需要写成 babel -->
+    <script type="text/babel">
+        class MyComponent extends React.Component {
+            render() {
+                console.log('调用 render 的实例对象', this)
+                return <h2>Hello World</h2>
+            }
+        }
+
+        ReactDOM.render(<MyComponent />, document.getElementById('test'))
+
+    </script>
+</body>
+
+</html>

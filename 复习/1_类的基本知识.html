@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>1_类的基本知识</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        class Person {
+            // 关键字，constructor
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+
+            speak() {
+                // 这里的语法，使用的反引号
+                console.log(`我叫${this.name}, 我的年龄是${this.age}`)
+            }
+        }
+
+        class Student extends Person {
+            constructor(name, age, grade) {
+                super(name, age)
+                this.grade = grade
+            }
+        }
+
+        const p1 = new Person("Alice", 18)
+        const p2 = new Person("Bob", 20)
+        console.log(p1)
+        console.log(p2)
+
+        p1.speak()
+        p2.speak()
+
+        const s1 = new Student('小张', 15, '高一')
+        console.log(s1)
+        s1.speak()
+    </script>
+</body>
+
+</html>
