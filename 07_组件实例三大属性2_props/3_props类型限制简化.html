@@ -30,10 +30,12 @@
                 age: PropTypes.number,
                 speak: PropTypes.func,
             }
+
             static defaultProps = {
                 sex: '未知',
                 age: 18
             }
+            
             render() {
                 console.log(this)
                 const { name, age, sex } = this.props
