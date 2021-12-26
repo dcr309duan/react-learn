@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>生命周期</title>
+</head>
+
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="test"></div>
+
+    <!-- 引入 react 核心库，引入之后，全局可以使用 React 对象 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入 react-dom. 用于支持 react 操作 DOM，全局可以使用 ReactDOM 对象 -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入 babel, 用于将 jsx 转位 js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <!-- 这里 type 需要写成 babel -->
+    <script type="text/babel">
+
+        class Life extends React.Component {
+            state = { opacity: 1 }
+
+            death = () => {
+                ReactDOM.unmountComponentAtNode(document.getElementById('test'))
+            }
+
+            componentDidMount() {
+                this.timer = setInterval(() => {
+                    let { opacity } = this.state
+                    opacity -= 0.1
+                    if (opacity <= 0) {
+                        opacity = 1
+                    }
+                    this.setState({ opacity })
+                }, 200)
+            }
+
+            componentWillUnmount() {
+                clearInterval(this.timer)
+            }
+
+            render() {
+                return (
+                    <div>
+                        <h2 style={{ opacity: this.state.opacity }}>React学不会怎么办？</h2>
+                        <button onClick={this.death}>
+                            不活了
+                        </button>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<Life />, document.getElementById('test'))
+
+    </script>
+</body>
+
+</html>
