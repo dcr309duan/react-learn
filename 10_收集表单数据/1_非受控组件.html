@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>事件处理</title>
+</head>
+
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="test"></div>
+
+    <!-- 引入 react 核心库，引入之后，全局可以使用 React 对象 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入 react-dom. 用于支持 react 操作 DOM，全局可以使用 ReactDOM 对象 -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入 babel, 用于将 jsx 转位 js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <!-- 这里 type 需要写成 babel -->
+    <script type="text/babel">
+
+        class Login extends React.Component {
+            handleSubmit = (event) => {
+                event.preventDefault() // 阻止表单提交
+                const { username, password } = this
+                alert(`你输入的用户名是: ${username.value}, 密码是: ${password.value}`)
+            }
+            render() {
+                return (
+                    <form action="http://www.atguigu.com" onSubmit={this.handleSubmit}>
+                        用户名: <input ref={c => this.username = c} type="text" name="username" />
+                        密码: <input ref={c => this.password = c} type="password" name="password" />
+                        <button>登陆</button>
+                    </form>
+                )
+            }
+        }
+
+        ReactDOM.render(<Login />, document.getElementById('test'))
+
+    </script>
+</body>
+
+</html>
